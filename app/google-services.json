@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "81688549475",
+    "project_id": "appscitas-9e999",
+    "storage_bucket": "appscitas-9e999.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:81688549475:android:839932a5acdc143f554056",
+        "android_client_info": {
+          "package_name": "com.moniguar.app.citas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "81688549475-db226i1o3kfetf6v9rl2jt44v1ca21s8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDn-Ao6-a8v321Zo2XffhHKdGK7R15u9iU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "81688549475-db226i1o3kfetf6v9rl2jt44v1ca21s8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
