@@ -11,9 +11,13 @@
         <entry key="..\:/ciclo4/AppCitas/app/src/main/res/layout/activity_see_date.xml" value="0.1" />
         <entry key="..\:/ciclo4/AppCitas/app/src/main/res/layout/activity_user.xml" value="0.1" />
         <entry key="..\:/ciclo4/AppCitas/app/src/main/res/layout/elements.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_actualizar.xml" value="0.3802083333333333" />
+        <entry key="app/src/main/res/layout/activity_find_date.xml" value="0.3802083333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.21" />
         <entry key="app/src/main/res/layout/activity_menu.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_see_data.xml" value="0.3802083333333333" />
         <entry key="app/src/main/res/layout/activity_user.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/actualizar_usuario.xml" value="0.3802083333333333" />
       </map>
     </option>
   </component>

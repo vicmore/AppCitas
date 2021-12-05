@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCitas">
         <activity
+            android:name=".ActualizarActivity"
+            android:exported="false" />
+        <activity
             android:name=".SeeData"
             android:exported="false" />
         <activity

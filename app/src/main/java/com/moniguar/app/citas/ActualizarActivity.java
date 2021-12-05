@@ -1,5 +1,8 @@
 package com.moniguar.app.citas;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,25 +11,24 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class UserActivity extends AppCompatActivity {
+public class ActualizarActivity extends AppCompatActivity {
 
     Button btnActualizar, btnBack;
-    private EditText txtNombres, txtIdentificacion, txtDireccion, txtCiudad, txtCelular, txtFijo, txtEmail, txtContacto, txtCelContacto, txtLogin, txtPassword;
+    EditText txtNombres, txtIdentificacion, txtDireccion, txtCiudad, txtCelular, txtFijo, txtEmail, txtContacto, txtCelContacto, txtLogin, txtPassword, txtNombre;
 
     FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+    FirebaseUser user = auth.getCurrentUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,13 +49,16 @@ public class UserActivity extends AppCompatActivity {
         txtCelContacto = findViewById(R.id.txtCelContacto);
         txtLogin = findViewById(R.id.txtLogin);
         txtPassword = findViewById(R.id.editTextTextPassword);
+        txtNombre = findViewById(R.id.textView5);
 
-        /*+ Para evento registrar */
+        txtNombre.setText(user.getProviderId());
+
+        /*+ Para evento actualizar */
         btnActualizar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("UserActivity", "Botón actualizar pulsado");
-                Toast.makeText(UserActivity.this, "Pulsamos botón actualizar", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ActualizarActivity.this, "Pulsamos botón actualizar", Toast.LENGTH_SHORT).show();
                 registrar();
             }
         });
@@ -62,7 +67,7 @@ public class UserActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(UserActivity.this,MenuActivity.class);
+                Intent i = new Intent(ActualizarActivity.this, MenuActivity.class);
                 startActivity(i);
             }
         });
@@ -82,32 +87,6 @@ public class UserActivity extends AppCompatActivity {
         usuario.put("login", txtLogin.getText().toString());
         usuario.put("password", txtPassword.getText().toString());
 
-        firestore.collection("Usuario").document(txtIdentificacion.getText().toString()).set(usuario);
-        registrarLogin(txtLogin.getText().toString(), txtPassword.getText().toString());
-    }
-
-    public void registrarLogin(String eMail, String password) {
-        auth.createUserWithEmailAndPassword(eMail, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()) {
-                    String id = auth.getCurrentUser().getUid();
-                    Map<String, Object> datos = new HashMap<>();
-                    datos.put("eMail", eMail);
-                    datos.put("password", password);
-                    firestore.collection("Usuarios").document(id).set(datos).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task2) {
-                            if (task2.isSuccessful()) {
-                                Toast.makeText(UserActivity.this, "Usuario Registrado", Toast.LENGTH_SHORT).show();
-                            }
-                            else {
-                                Toast.makeText(UserActivity.this, "Error en el Registro!", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-                }
-            }
-        });
+        firestore.collection("Usuario").document(txtIdentificacion.getText().toString()).update(usuario);
     }
 }

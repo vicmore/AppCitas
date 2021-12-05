@@ -58,7 +58,5 @@ public class FindDate extends AppCompatActivity {
                     }
                 }
         );
-
-
     }
 }

@@ -39,6 +39,5 @@ public class SeeData extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Elegiste " + id, Toast.LENGTH_SHORT).show();
             }
         });
-
     }
 }
