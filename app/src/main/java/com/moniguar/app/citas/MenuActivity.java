@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,7 +15,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class MenuActivity extends AppCompatActivity {
 
     ImageButton imgMenuUser, imgFindDate, imgSeeDate, imgBtnExit;
-    EditText txtNombre;
+    TextView txtNombre;
 
     FirebaseAuth auth = FirebaseAuth.getInstance();
 

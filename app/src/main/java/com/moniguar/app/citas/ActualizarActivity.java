@@ -26,18 +26,17 @@ public class ActualizarActivity extends AppCompatActivity {
     Button btnActualizar, btnBack;
     EditText txtNombres, txtIdentificacion, txtDireccion, txtCiudad, txtCelular, txtFijo, txtEmail, txtContacto, txtCelContacto, txtLogin, txtPassword, txtNombre;
 
-    FirebaseAuth auth = FirebaseAuth.getInstance();
     FirebaseFirestore firestore = FirebaseFirestore.getInstance();
-    FirebaseUser user = auth.getCurrentUser();
+    FirebaseAuth auth = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
+        FirebaseUser user = auth.getCurrentUser();
         btnActualizar = findViewById(R.id.btnActualzar);
         btnBack = findViewById(R.id.btnBackSearch);
-
         txtNombres = findViewById(R.id.txtNombres);
         txtIdentificacion = findViewById(R.id.txtIdentificacion);
         txtDireccion = findViewById(R.id.txtDireccion);
@@ -51,7 +50,7 @@ public class ActualizarActivity extends AppCompatActivity {
         txtPassword = findViewById(R.id.editTextTextPassword);
         txtNombre = findViewById(R.id.textView5);
 
-        txtNombre.setText(user.getProviderId());
+        //txtNombre.setText(user.getProviderId());
 
         /*+ Para evento actualizar */
         btnActualizar.setOnClickListener(new View.OnClickListener() {
